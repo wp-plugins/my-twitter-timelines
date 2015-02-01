@@ -11,16 +11,17 @@ My Twitter Timelines is an all-in-one Twitter widget. With this widget, you can 
 
 Demo & Documentation :: http://audaciotech.com/wordpress/documentation/
 
-You do not have to install multiple Twitter widgets anymore to manage Twitter feeds on your website… Just install My Twitter Timelines and enjoy!
+You do not have to install multiple Twitter widgets any more to manage Twitter feeds on your website. Just install My Twitter Timelines and enjoy!
 
 My Twitter Timelines offers a plethora of embeddable tools that integrates Twitter and displays Tweets on your WordPress site. In other words, by using our widget, you can display your own Twitter feeds on your website.
 
 My Twitter Timelines do not only have one feature; this widget can be your complete Twitter solution. By using this widget you can display various timelines at a time, which are:
-•	User Timelines
-•	User Favorite Timelines
-•	Search Timeline
-•	List Timeline
-•	Collection Timeline
+
+1. User Timelines
+2. User Favorite Timelines
+3. Search Timeline
+4. List Timeline
+5. Collection Timeline
 
 Highly Customizable:
 
