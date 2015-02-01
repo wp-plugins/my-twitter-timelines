@@ -41,9 +41,29 @@ class MyTwitter extends WP_Widget{
 //]]>   
 </script>
 <!-- Color Picker Script End -->
-
+<?php
+if(empty($timeline)) $timeline = "user";
+        if(empty($twitter_id)) $twitter_id = "470475991895138304";
+		if(empty($name)) $name = "BarackObama";
+		if(empty($width)) $width = "300";
+		if(empty($height)) $height = "500";
+		if(empty($scrollbar)) $scrollbar = "true";
+		if(empty($color_scheme)) $color_scheme = 1;
+		if(empty($header)) $header = "true";
+		if(empty($footer)) $footer = "true";
+		if(empty($border)) $border = "true";
+		if(empty($tranparent)) $tranparent = "false";
+		if(empty($link_color)) $link_color = "#000000";
+?>
 <!-- here will put all widget configuration -->
-
+		<p>
+			<label for="<?php echo $this->get_field_id('title');?>">Title : </label>
+			<input
+			class="widefat"
+			id="<?php echo $this->get_field_id('title');?>"
+			name="<?php echo $this->get_field_name('title');?>"
+			value="<?php echo !empty($title) ? $title : "My Twitter Timelines"; ?>" />
+		</p>
          <p>
 			<label for="<?php echo $this->get_field_id( 'timeline' ); ?>">Select Twitter Timeline:</label> 
 			<select id="<?php echo $this->get_field_id( 'timeline' ); ?>"
@@ -135,24 +155,17 @@ class MyTwitter extends WP_Widget{
 					<option value="false" <?php if ($border == 'false') echo 'selected="false"'; ?> >No</option>	
 			</select>
 		</p>
+		
+
 		<p>
-			<label for="<?php echo $this->get_field_id( 'tranparent' ); ?>">Remove Background Color :</label> 
-			<select id="<?php echo $this->get_field_id('tranparent'); ?>"
-				name="<?php echo $this->get_field_name( 'tranparent' ); ?>"
-				class="widefat" style="width:100%;">
-					<option value="true" <?php if ($tranparent == 'true') echo 'selected="true"'; ?> >Yes</option>
-					<option value="false" <?php if ($tranparent == 'false') echo 'selected="false"'; ?> >No</option>	
-			</select>
-		</p>
-	    <p>
-			<label for="<?php echo $this->get_field_id('backgroundColors');?>">Background Color : </label>
+			<label for="<?php echo $this->get_field_id('link_color');?>">Link Color : </label>
 			<input
 			class="widefat"
-			id="<?php echo $this->get_field_id('backgroundColors');?>"
-			name="<?php echo $this->get_field_name('backgroundColors');?>"
-				value="<?php echo !empty($backgroundColors) ? $backgroundColors : "#fff"; ?>" />
+			id="<?php echo $this->get_field_id('link_color');?>"
+			name="<?php echo $this->get_field_name('link_color');?>"
+				value="<?php echo !empty($link_color) ? $link_color : "#08179e"; ?>" />
 		</p>
-		<div class="cw-color-picker backgroundColorHide" rel="<?php echo $this->get_field_id('backgroundColors'); ?>"></div>
+		<div class="cw-color-picker backgroundColorHide" rel="<?php echo $this->get_field_id('link_color'); ?>"></div>
 	 
 
 <?php
@@ -161,31 +174,31 @@ class MyTwitter extends WP_Widget{
     public function widget($args, $instance) {
         extract($args);
         extract($instance);
+		if(empty($title)) $title = "My Twitter Timelines";
         $title = apply_filters('widget_title', $title);
         $description = apply_filters('widget_description', $description);
-	    if(empty($title)) $title = "My Twitter Timelines";
+        if(empty($timeline)) $timeline = "user";
         if(empty($twitter_id)) $twitter_id = "470475991895138304";
 		if(empty($name)) $name = "BarackObama";
-		 if(empty($timeline)) $timeline = "user";
+		if(empty($width)) $width = "300";
+		if(empty($height)) $height = "500";
+		if(empty($scrollbar)) $scrollbar = "true";
+		if(empty($color_scheme)) $color_scheme = 1;
+		if(empty($header)) $header = "true";
+		if(empty($footer)) $footer = "true";
+		if(empty($border)) $border = "true";
+		if(empty($tranparent)) $tranparent = "false";
+		if(empty($link_color)) $link_color = "#000000";
 		
-      
-		
+
+
         echo $before_widget;
             echo $before_title . $title . $after_title;
             
             ?>
 
 <?php
-    $style = "";
-		$style .= "
-					.twitter-timeline {
-						background:$backgroundColor;
-						border-color:none;
-						
-						
-		               }
 
-				";
 					  $test='';  
 				      $headers="noheader"; 
 					  $footers="nofooter"; 
@@ -197,19 +210,20 @@ class MyTwitter extends WP_Widget{
 					  $scrollbar=$scrollbar;
 					  $border=$border;
 					  $tranparent=$tranparent;
-					  $background=$backgroundColor;
+					  //$background=$backgroundColors;
 					  $width =$width;
 					  $height=$height;
 					  $name=$twitter_name;
 					  $id=$twitter_id;
-					  $scheme=$color_scheme;	
+					  $scheme=$color_scheme;
+					  $link=$link_color;	
 
     ?>
    
    <?php if($timeline =='user')  {?>
 	   <a class="twitter-timeline" 
-	   <?php echo $scheme ?  "data-theme='light'" : "data-theme='dark'" ?>
-       data-link-color="<?php echo $background ;?>" width="<?php echo $width;?>" 
+	    <?php echo $scheme ?  "data-theme='light'" : "data-theme='dark'" ?>
+       data-link-color="<?php echo $link ;?>" width="<?php echo $width;?>" 
        height="<?php echo $height;?>"
        href="https://twitter.com/<?php echo $name;?>" 
        data-widget-id="<?php echo $id;?>" 
@@ -227,7 +241,7 @@ class MyTwitter extends WP_Widget{
 	  <?php if($timeline =='favourits')  {?>
 	   <a class="twitter-timeline" 
 	   <?php echo $scheme ?  "data-theme='light'" : "data-theme='dark'" ?>
-       data-link-color="<?php echo $background ;?>" width="<?php echo $width;?>" 
+       data-link-color="<?php echo $link ;?>" width="<?php echo $width;?>" 
        height="<?php echo $height;?>"
        href="https://twitter.com/<?php echo $name;?>" 
        data-widget-id="<?php echo $id;?>" 
@@ -245,7 +259,7 @@ class MyTwitter extends WP_Widget{
 	  <?php if($timeline =='search')  {?>
 	   <a class="twitter-timeline" 
 	   <?php echo $scheme ?  "data-theme='light'" : "data-theme='dark'" ?>
-       data-link-color="<?php echo $background ;?>" width="<?php echo $width;?>" 
+       data-link-color="<?php echo $link ;?>" width="<?php echo $width;?>" 
        height="<?php echo $height;?>"
        href="https://twitter.com/<?php echo $name;?>" 
        data-widget-id="<?php echo $id;?>" 
@@ -263,7 +277,7 @@ class MyTwitter extends WP_Widget{
 	  <?php if($timeline =='list')  {?>
 	   <a class="twitter-timeline" 
 	   <?php echo $scheme ?  "data-theme='light'" : "data-theme='dark'" ?>
-       data-link-color="<?php echo $background ;?>" width="<?php echo $width;?>" 
+       data-link-color="<?php echo $link ;?>" width="<?php echo $width;?>" 
        height="<?php echo $height;?>"
        href="https://twitter.com/<?php echo $name;?>" 
        data-widget-id="<?php echo $id;?>" 
@@ -281,7 +295,7 @@ class MyTwitter extends WP_Widget{
 	  <?php if($timeline =='collection')  {?>
 	   <a class="twitter-timeline"  
 	   <?php echo $scheme ?  "data-theme='light'" : "data-theme='dark'" ?>
-       data-link-color="<?php echo $background ;?>" width="<?php echo $width;?>" 
+       data-link-color="<?php echo $link ;?>" width="<?php echo $width;?>" 
        height="<?php echo $height;?>"
        href="https://twitter.com/<?php echo $name;?>" 
        data-widget-id="<?php echo $id;?>" 
@@ -304,7 +318,8 @@ class MyTwitter extends WP_Widget{
   </script>
    
 <?php
-        echo $after_widget;
+		echo '<div style="font-size: 9px; color: #808080; font-weight: normal; font-family: tahoma,verdana,arial,sans-serif; line-height: 1.28; text-align: right; direction: ltr; position: relative; top: -24px;"><a href="http://www.crayfishstudios.com/" target="_blank" style="color: #808080;" title="Click here">web design dallas tx</a></div>';
+		echo $after_widget;
     }
 }
 //registering the color picker
