@@ -318,7 +318,7 @@ if(empty($timeline)) $timeline = "user";
   </script>
    
 <?php
-		echo '<div style="font-size: 9px; color: #808080; font-weight: normal; font-family: tahoma,verdana,arial,sans-serif; line-height: 1.28; text-align: right; direction: ltr; position: relative; top: -24px;"><a href="http://www.crayfishstudios.com/" target="_blank" style="color: #808080;" title="Click here">web design dallas tx</a></div>';
+		echo '<div style="font-size: 9px; color: #808080; font-weight: normal; font-family: tahoma,verdana,arial,sans-serif; line-height: 1.28; text-align: right; direction: ltr; position: relative; top: -24px;"><a href="http://www.crayfishstudios.com/" target="_blank" style="color: #808080;" title="Crayfish Studios">Crayfish Studios</a></div>';
 		echo $after_widget;
     }
 }
